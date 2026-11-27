@@ -8,7 +8,8 @@
 - `index.html` — homepage, at the top level
 - `css/styles.css` — shared styles, including the light and dark theme colours
 - `js/theme.js` — shared light/dark theme toggle (loaded by every page)
-- `tools/` — one page per tool (so far only the placeholder `tool-1.html`)
+- `js/solar-sizing.js` — the sizing calculator's logic (`calculate()` is plain maths, testable in Node)
+- `tools/` — one page per tool (so far `solar-sizing.html`)
 - `assets/` — images and other static files (not created yet)
 
 Update this section as files are added.
@@ -29,8 +30,8 @@ A portal where students try small web tools about solar power systems.
 
 ### Phases
 1. **Phase 1: the portal plus its first tool.**
-   - [x] Portal: homepage, theme toggle, shared styles, and one placeholder card ("Tool 1 — coming soon") that opens `tools/tool-1.html` and returns via the back link. Styling is simple and neutral; the visual design is still to be chosen.
-   - [ ] First real tool: the **system sizing calculator** (daily electricity use and sun hours in; number of panels, array size and battery size out). It replaces the placeholder.
+   - [x] Portal: homepage, theme toggle, shared styles, and a tool card that opens the tool page and returns via the back link. Styling is simple and neutral; the visual design is still to be chosen.
+   - [x] First real tool: the **system sizing calculator** (daily electricity use and sun hours in; number of panels, array size and battery size out), with the working shown and example climates for sun hours. It replaced the placeholder: the homepage card opens `tools/solar-sizing.html`.
 2. **Phase 2: more tools.** Add further solar tools one at a time (ideas: panel output estimator, payback and savings, battery runtime).
 3. **Phase 3: polish.** Improvements based on use, such as tool search and short "how it works" notes. To be decided later.
 

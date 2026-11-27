@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solar system sizing calculator — Solar Power Tools</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/theme.js"></script>
+  <script src="../js/solar-sizing.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="../index.html">Solar Power Tools</a>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">Switch to dark theme</button>
+  </header>
+
+  <main>
+    <a class="back-link" href="../index.html">&larr; Back to all tools</a>
+    <h1>Solar system sizing calculator</h1>
+    <p class="muted">Work out how many solar panels and how big a battery a home needs. Fill in the boxes and the answers update as you type.</p>
+
+    <form id="sizing-form" class="tool-form" novalidate>
+      <div class="field">
+        <label for="daily-use">Daily electricity use (kWh per day)</label>
+        <input id="daily-use" type="number" inputmode="decimal" min="0" step="any" placeholder="e.g. 10">
+        <p class="hint">A kWh (kilowatt-hour) is the unit of energy on an electricity bill. Divide the energy used in a month by 30 to get a daily figure.</p>
+      </div>
+
+      <div class="field">
+        <label for="sun-hours">Peak sun hours per day</label>
+        <input id="sun-hours" type="number" inputmode="decimal" min="0" max="12" step="any" value="4.5">
+        <p class="hint">Peak sun hours are the hours each day when the sunlight is at full strength. Not sure? Pick an example below.</p>
+        <label for="climate" class="inline-label">Example climates</label>
+        <select id="climate">
+          <option value="3">Cloudy (3 hours)</option>
+          <option value="4.5" selected>Average (4.5 hours)</option>
+          <option value="6">Sunny (6 hours)</option>
+          <option value="7">Very sunny (7 hours)</option>
+          <option value="custom">Custom (my own number)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="panel-watts">Power of one panel (watts)</label>
+        <input id="panel-watts" type="number" inputmode="decimal" min="0" step="any" value="400">
+        <p class="hint">A watt (W) measures power. Home solar panels are commonly 300 to 450 W.</p>
+      </div>
+
+      <div class="field">
+        <label for="backup-days">Days of battery backup</label>
+        <input id="backup-days" type="number" inputmode="decimal" min="0" step="any" value="1">
+        <p class="hint">How many days the home should keep running on the battery alone, with no sun.</p>
+      </div>
+
+      <div class="field">
+        <label for="depth">Usable battery depth (%)</label>
+        <input id="depth" type="number" inputmode="decimal" min="1" max="100" step="any" value="80">
+        <p class="hint">Batteries last longer if they are never fully emptied. 80 means only 80% of the battery is used.</p>
+      </div>
+    </form>
+
+    <section class="results" aria-live="polite" aria-labelledby="results-heading">
+      <h2 id="results-heading">Results</h2>
+      <p id="message" class="message"></p>
+      <dl id="results-list" class="results-list" hidden>
+        <div>
+          <dt>Number of panels</dt>
+          <dd id="out-panels"></dd>
+          <dd class="muted">How many panels you need to cover the daily use.</dd>
+        </div>
+        <div>
+          <dt>Solar array size</dt>
+          <dd id="out-array"></dd>
+          <dd class="muted">The combined power of all the panels. An "array" is a group of panels.</dd>
+        </div>
+        <div>
+          <dt>Battery size</dt>
+          <dd id="out-battery"></dd>
+          <dd class="muted">How much energy the battery must store to cover the backup days.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="working-section" class="working" hidden>
+      <h2>Show the working</h2>
+      <p class="muted">Real systems lose about 25% of their power to heat, wiring and the inverter (the device that turns solar power into the kind your home uses). So the sums multiply by 0.75, called the losses factor.</p>
+      <ol id="working-list"></ol>
+    </section>
+  </main>
+</body>
+</html>
